@@ -1,0 +1,6 @@
+so sed s/ACGCTCGA+NGATCTCG/ACGCTCGA_NGATCTCG/g [fastq pretrim] > fastqname_headerfix_R1.fastq
+do that on R1 and R2 and run through your whole script again starting with the files with the new headers and see what happens
+
+sed s/[ACGTN]+[ACGTN]/N_N/g file1 > file2
+
+sed s/.+./N_N/g file1 > file2

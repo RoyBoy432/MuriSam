@@ -5,7 +5,7 @@
 # SamMuri_2Y
 date
 cd /N/dc2/projects/muri2/SamMuri/Year_2
-AR=(<syn1_1>)
+AR=(syn1_1)
 
 for i in "${AR[@]}"
 do
