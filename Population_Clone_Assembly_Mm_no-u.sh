@@ -5,7 +5,7 @@
 # SamMuri_2Y
 date
 cd /N/dc2/projects/muri2/roy/Mm_NSE
-AR=(syn1_3)
+AR=(syn1_6)
 
 for i in "${AR[@]}"
 do
@@ -25,9 +25,7 @@ do
 	echo "" >> Mm_NSE_${i}_qc_clean.sh
 	echo "time cutadapt -a AGATCGGAAGAGC -A AGATCGGAAGAGC  -o Sample_${i}_R1_rmadapter.fastq -p Sample_${i}_R2_rmadapter.fastq Sample_${i}_R1.fastq Sample_${i}_R2.fastq" >> Mm_NSE_${i}_qc_clean.sh
 	echo "" >> Mm_NSE_${i}_qc_clean.sh
-	echo "time cutadapt -q 15,10  -o Sample_${i}_R1_filtered.fastq -p Sample_${i}_R2_filtered.fastq Sample_${i}_R1_rmadapter.fastq Sample_${i}_R2_rmadapter.fastq" >> Mm_NSE_${i}_qc_clean.sh
-	echo "" >> Mm_NSE_${i}_qc_clean.sh
-	echo "time cutadapt -u 15 -o Sample_${i}_R1_trimmed.fastq -p Sample_${i}_R2_trimmed.fastq Sample_${i}_R1_filtered.fastq Sample_${i}_R2_filtered.fastq" >> Mm_NSE_${i}_qc_clean.sh
+	echo "time cutadapt -q 15,10  -o Sample_${i}_R1_trimmed.fastq -p Sample_${i}_R2_trimmed.fastq Sample_${i}_R1_rmadapter.fastq Sample_${i}_R2_rmadapter.fastq" >> Mm_NSE_${i}_qc_clean.sh
 	echo "" >> Mm_NSE_${i}_qc_clean.sh
 	echo "qsub -l walltime=20:00:00,vmem=64gb,nodes=1:ppn=4 Mm_NSE_${i}_Assemble.sh" >> Mm_NSE_${i}_qc_clean.sh
 	echo "" >> Mm_NSE_${i}_qc_clean.sh
