@@ -1,0 +1,4 @@
+Fri Aug 30 13:05:29 2019
+
+breseq -j 8 -p -o Samplesyn1_4_breseq -r /N/dc2/projects/muri2/roy/Mm_NSE/reference/JCVI-syn1.0_reference/Synthetic.Mycoplasma.mycoides.JCVI-syn1.0_CP002027.1.gb Sample_syn1_4/Sample_syn1_4_R1_trimmed.fastq Sample_syn1_4/Sample_syn1_4_R2_trimmed.fastq
+
