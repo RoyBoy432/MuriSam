@@ -1,0 +1,4 @@
+Fri Aug 30 13:08:50 2019
+
+breseq -j 8 -p -o Sample3B_14_breseq -r /N/dc2/projects/muri2/roy/Mm_NSE/reference/JCVI-syn3A_reference_CP016816.2/Synthetic.bacterium_JCVI-Syn3A.gb Sample_3B_14/Sample_3B_14_R1_trimmed.fastq Sample_3B_14/Sample_3B_14_R2_trimmed.fastq
+
