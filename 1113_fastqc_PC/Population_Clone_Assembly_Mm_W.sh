@@ -5,7 +5,7 @@
 # SamMuri_2Y
 date
 cd /N/dc2/projects/muri2/roy/Mm_NSE
-AR=(3B_U)
+AR=(3B_W)
 
 for i in "${AR[@]}"
 do
