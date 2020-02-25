@@ -5,9 +5,10 @@
 # SamMuri_2Y
 date
 cd /N/dc2/projects/muri2/roy/MA_s1/
-AR=(96)
+#AR=(96)
 
-for i in "${AR[@]}"
+#for i in "${AR[@]}"
+for ((i=1;i<=96;i++));
 do
     module load gatk/3.8; module load samtools; module load cutadapt; module load fastqc; module load bwa; module load picard
 	cd s1_${i}
@@ -25,7 +26,9 @@ do
 	echo "" >> MA_s1_${i}_qc_clean.sh
 	echo "time cutadapt -a AGATCGGAAGAGC -A AGATCGGAAGAGC -o s1_${i}_R1_rmadapter.fastq -p s1_${i}_R2_rmadapter.fastq s1_${i}_R1.fastq s1_${i}_R2.fastq" >> MA_s1_${i}_qc_clean.sh
 	echo "" >> MA_s1_${i}_qc_clean.sh
-	echo "time cutadapt -u 5 -o s1_${i}_R1_trimmed.fastq -p s1_${i}_R2_trimmed.fastq s1_${i}_R1_rmadapter.fastq s1_${i}_R2_rmadapter.fastq" >> MA_s1_${i}_qc_clean.sh
+	echo "time cutadapt -u 5 -o s1_${i}_R1_trimmed.fastq s1_${i}_R1_rmadapter.fastq" >> MA_s1_${i}_qc_clean.sh
+	echo "" >> MA_s1_${i}_qc_clean.sh
+	echo "time cutadapt -u 5 -o s1_${i}_R2_trimmed.fastq s1_${i}_R2_rmadapter.fastq" >> MA_s1_${i}_qc_clean.sh
 	echo "" >> MA_s1_${i}_qc_clean.sh
 	echo "qsub -l walltime=2:00:00,vmem=64gb,nodes=1:ppn=4 MA_s1_${i}_Assemble.sh" >> MA_s1_${i}_qc_clean.sh
 	echo "" >> MA_s1_${i}_qc_clean.sh
@@ -53,7 +56,7 @@ do
 	echo "" >> MA_s1_${i}_Assemble.sh
 	echo "time bwa aln /N/dc2/projects/muri2/roy/Mm_NSE/reference/JCVI-syn1.0_reference/Synthetic.Mycoplasma.mycoides.JCVI-syn1.0_CP002027.1.fasta s1_${i}_R2_trimmed.fastq > s1_${i}_R2_aln.sai" >> MA_s1_${i}_Assemble.sh
     echo "" >> MA_s1_${i}_Assemble.sh
-	echo "time bwa sampe /N/dc2/projects/muri2/roy/Mm_NSE/reference/JCVI-syn1.0_reference/Synthetic.Mycoplasma.mycoides.JCVI-syn1.0_CP002027.1.fasta s1_${i}_R1_aln.sai s1_${i}_R2_aln.sai s1_${i}_R1_trimmed.fastq s2_${i}_R1_trimmed.fastq > s1_${i}.sam" >> MA_s1_${i}_Assemble.sh
+	echo "time bwa sampe /N/dc2/projects/muri2/roy/Mm_NSE/reference/JCVI-syn1.0_reference/Synthetic.Mycoplasma.mycoides.JCVI-syn1.0_CP002027.1.fasta s1_${i}_R1_aln.sai s1_${i}_R2_aln.sai s1_${i}_R1_trimmed.fastq s1_${i}_R2_trimmed.fastq > s1_${i}.sam" >> MA_s1_${i}_Assemble.sh
    	echo "" >> MA_s1_${i}_Assemble.sh
 	echo "qsub -l walltime=1:00:00,vmem=20gb MA_s1_${i}_compress.fastq.sh" >> MA_s1_${i}_Assemble.sh
 	echo "" >> MA_s1_${i}_Assemble.sh
@@ -86,7 +89,7 @@ do
 	echo ""
 	echo "" >> MA_s1_${i}_compress.fastq.sh
 	echo "cd /N/dc2/projects/muri2/roy/MA_s1/s1_${i}/" >> MA_s1_${i}_compress.fastq.sh
-	echo "rm s1_${i}_R*_filtered.fastq" >> MA_s1_${i}_compress.fastq.sh
+	#echo "rm s1_${i}_R*_filtered.fastq" >> MA_s1_${i}_compress.fastq.sh
 	echo "rm s1_${i}_R*_rmadapter.fastq" >> MA_s1_${i}_compress.fastq.sh
 	echo "" >> MA_s1_${i}_compress.fastq.sh
 	echo "exit" >> MA_s1_${i}_compress.fastq.sh

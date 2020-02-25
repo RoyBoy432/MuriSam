@@ -5,7 +5,7 @@ cd /N/dc2/projects/muri2/roy/MA_s1/
 #AR=(3B_U 3B_V 3B_W 3B_X 3B_Y)
 
 #for i in "${AR[@]}"
-for ((i=1;i<=96;i++));
+for ((i=94;i<=96;i++));
 do
 	module load breseq
 	echo "cd /N/dc2/projects/muri2/roy/MA_s1/" > s1_BreSeq_${i}
