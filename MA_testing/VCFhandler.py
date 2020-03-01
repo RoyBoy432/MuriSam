@@ -33,6 +33,8 @@ def count_fixed_mutations_3B(infile="",samplename=""):
     for m in sample:
         if m.POS >= 76900 and m.POS <= 76909:#there is an oligo-T deletion in the MA_3B ancestor, but breseq doesn't always score it exactly the same, and therefore it wasn't subtracted out of the lines---hence I am subtracting it here
             continue
+        elif m.POS == 20938:
+            continue
         else:
             if m.INFO["AF"][0]!=1.0:
                 #print("not fixed")
